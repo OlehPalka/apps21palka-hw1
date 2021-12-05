@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
     private double[] temperatureSeries;
     private int actualLength = 0;
+    private int theLowest = -273;
 
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[] {};
@@ -24,7 +25,6 @@ public class TemperatureSeriesAnalysis {
 
     public void checkTheLowest(double[] temperatureSeries) {
         for (double temp:temperatureSeries) {
-            int theLowest = -273;
             if (temp <= theLowest) {
                 throw new InputMismatchException();
             }
