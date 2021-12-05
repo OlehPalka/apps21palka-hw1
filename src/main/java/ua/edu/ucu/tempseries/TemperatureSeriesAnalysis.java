@@ -6,7 +6,6 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
     private double[] temperatureSeries;
     private int actualLength = 0;
-    static final int theLowest = -273;
 
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[] {};
@@ -25,6 +24,7 @@ public class TemperatureSeriesAnalysis {
 
     public void checkTheLowest(double[] temperatureSeries) {
         for (double temp:temperatureSeries) {
+            int theLowest = -273;
             if (temp <= theLowest) {
                 throw new InputMismatchException();
             }
@@ -50,39 +50,39 @@ public class TemperatureSeriesAnalysis {
         exceptionsHolder();
 
         double mean = this.average();
-        double SD = 0;
+        double sd = 0;
         for (double num : temperatureSeries) {
-            SD += Math.pow(num - mean, 2);
+            sd += num - mean * num - mean;
         }
-        SD = Math.sqrt(SD / actualLength);
-        return SD;
+        sd = Math.sqrt(sd / actualLength);
+        return sd;
     }
 
     public double min() {
         exceptionsHolder();
 
-        double MinimalElement = Double.POSITIVE_INFINITY;
+        double minimalElement = Double.POSITIVE_INFINITY;
 
         for (double num : temperatureSeries) {
-            if (num < MinimalElement) {
-                MinimalElement = num;
+            if (num < minimalElement) {
+                minimalElement = num;
             }
         }
 
-        return MinimalElement;
+        return minimalElement;
     }
 
     public double max() {
         exceptionsHolder();
 
-        double MaxElement = Double.POSITIVE_INFINITY * -1;
+        double maxElement = Double.POSITIVE_INFINITY * -1;
 
         for (double num : temperatureSeries) {
-            if (num > MaxElement) {
-                MaxElement = num;
+            if (num > maxElement) {
+                maxElement = num;
             }
         }
-        return MaxElement;
+        return maxElement;
     }
 
     public double findTempClosestToZero() {
@@ -92,21 +92,23 @@ public class TemperatureSeriesAnalysis {
     public double findTempClosestToValue(double tempValue) {
         exceptionsHolder();
 
-        double CurClosest = Double.POSITIVE_INFINITY;
+        double curClosest = Double.POSITIVE_INFINITY;
 
         for (double num : temperatureSeries) {
-            if (Math.abs(num - tempValue) < Math.abs(CurClosest - tempValue)) {
-                CurClosest = num;
+            if (Math.abs(num - tempValue) < Math.abs(curClosest - tempValue)) {
+                curClosest = num;
             }
         }
-        return CurClosest;
+        return curClosest;
     }
 
     public double[] findTempsLessThen(double tempValue) {
         return findTempLesOrGreat(tempValue, "<");
     }
 
-    public double[] findTempsGreaterThen(double tempValue) {return findTempLesOrGreat(tempValue, ">");}
+    public double[] findTempsGreaterThen(double tempValue) {
+        return findTempLesOrGreat(tempValue, ">");
+    }
 
     public double[] findTempLesOrGreat(double tempValue, String sign) {
         exceptionsHolder();
