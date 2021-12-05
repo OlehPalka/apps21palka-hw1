@@ -120,14 +120,14 @@ public class TemperatureSeriesAnalysis {
             for (double num : temperatureSeries) {
                 if (num < tempValue) {
                     result[counter] = num;
-                    counter ++;
+                    counter++;
                 }
             }
         } else {
             for (double num : temperatureSeries) {
                 if (num > tempValue) {
                     result[counter] = num;
-                    counter ++;
+                    counter++;
                 }
             }
         }
@@ -149,13 +149,13 @@ public class TemperatureSeriesAnalysis {
             }
         }
 
-        double [] NewResult = Arrays.copyOf(temperatureSeries, newLength);
+        double [] newResult = Arrays.copyOf(temperatureSeries, newLength);
         int index = 0;
         for (double temp : temps) {
-            NewResult[actualLength + index] = temp;
-            index ++;
+            newResult[actualLength + index] = temp;
+            index++;
         }
-        temperatureSeries = NewResult;
+        temperatureSeries = newResult;
         actualLength += tempsLength;
 
         int sum = 0;
