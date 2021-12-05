@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
     private double[] temperatureSeries;
     private int actualLength = 0;
-    private int theLowest = 0;
+    private int theLowest;
 
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[] {};
