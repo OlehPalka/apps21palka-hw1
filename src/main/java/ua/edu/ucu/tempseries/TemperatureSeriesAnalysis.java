@@ -23,10 +23,9 @@ public class TemperatureSeriesAnalysis {
     }
 
     public void checkTheLowest(double[] temperatureSeries) {
-        int TheLowest = -273;
-
         for (double temp:temperatureSeries) {
-            if (temp <= TheLowest) {
+            int theLowest = -273;
+            if (temp <= theLowest) {
                 throw new InputMismatchException();
             }
         }
