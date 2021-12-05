@@ -126,7 +126,7 @@ public class TemperatureSeriesAnalysis {
             }
         }
 
-        return Arrays.copyOf(temperatureSeries, counter - 1);
+        return Arrays.copyOf(result, counter - 1);
     }
 
     public TempSummaryStatistics summaryStatistics() {
