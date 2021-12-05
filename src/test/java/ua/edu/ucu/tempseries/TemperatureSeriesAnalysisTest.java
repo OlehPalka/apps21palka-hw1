@@ -32,6 +32,33 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(stats.getMinTemp(), -1.0, 0.00001);
     }
 
+    @Test
+    public void testAdding() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-1.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        int result = seriesAnalysis.addTemps(2.0);
+
+        assertEquals(result, 1.0, 0.00001);
+    }
+
+    @Test
+    public void testCreatingWithoutArray() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+
+        assertEquals(seriesAnalysis.getActualLength(), 0, 0.00001);
+    }
+
+    @Test
+    public void testFindingClosest() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+
+        assertEquals(seriesAnalysis.getActualLength(), 0, 0.00001);
+    }
+
+
+
+
     @Test(expected = IllegalArgumentException.class)
     public void testAverageWithEmptyArray() {
         double[] temperatureSeries = {};

@@ -12,12 +12,17 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        minus273(temperatureSeries);
-        this.temperatureSeries = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
+        checkTheLowest(temperatureSeries);
+        this.temperatureSeries = Arrays.copyOf(temperatureSeries,
+                temperatureSeries.length);
         actualLength = temperatureSeries.length;
     }
 
-    public void minus273(double[] temperatureSeries) {
+    public int getActualLength() {
+        return actualLength;
+    }
+
+    public void checkTheLowest(double[] temperatureSeries) {
         int TheLowest = -273;
 
         for (double temp:temperatureSeries) {
@@ -134,7 +139,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
-        minus273(temps);
+        checkTheLowest(temps);
         int newLength = 0;
         int tempsLength = temps.length;
         if (actualLength + tempsLength > temperatureSeries.length) {
