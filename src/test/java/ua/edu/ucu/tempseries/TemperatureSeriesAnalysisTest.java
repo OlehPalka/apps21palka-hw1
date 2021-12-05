@@ -51,13 +51,22 @@ public class TemperatureSeriesAnalysisTest {
 
     @Test
     public void testFindingClosest() {
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+        double[] temperatureSeries = {-1.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
-        assertEquals(seriesAnalysis.getActualLength(), 0, 0.00001);
+        assertEquals(seriesAnalysis.findTempClosestToZero(), -1.0, 0.00001);
     }
 
 
+    @Test
+    public void testFindingLessGreater() {
+        double[] temperatureSeries = {-1.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double[] expectedOutput = {-1.0};
 
+        assertEquals(seriesAnalysis.findTempsGreaterThen(-5.0)[0], expectedOutput[0], 0.00001);
+        assertEquals(seriesAnalysis.findTempsLessThen(5.0)[0], expectedOutput[0], 0.00001);
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void testAverageWithEmptyArray() {

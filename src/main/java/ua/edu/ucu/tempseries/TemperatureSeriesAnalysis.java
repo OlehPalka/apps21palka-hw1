@@ -132,7 +132,7 @@ public class TemperatureSeriesAnalysis {
             }
         }
 
-        return Arrays.copyOf(result, counter - 1);
+        return Arrays.copyOf(result, counter);
     }
 
     public TempSummaryStatistics summaryStatistics() {
