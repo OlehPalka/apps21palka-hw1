@@ -6,11 +6,10 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
     private double[] temperatureSeries;
     private int actualLength = 0;
-    private int theLowest;
+    static private final int theLowest = -273;
 
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[] {};
-        theLowest = -237;
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
@@ -18,7 +17,6 @@ public class TemperatureSeriesAnalysis {
         this.temperatureSeries = Arrays.copyOf(temperatureSeries,
                 temperatureSeries.length);
         actualLength = temperatureSeries.length;
-        theLowest = -237;
     }
 
     public int getActualLength() {
