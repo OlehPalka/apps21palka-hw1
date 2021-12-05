@@ -52,7 +52,7 @@ public class TemperatureSeriesAnalysis {
         double mean = this.average();
         double sd = 0;
         for (double num : temperatureSeries) {
-            sd += num - mean * num - mean;
+            sd += (num - mean) * (num - mean);
         }
         sd = Math.sqrt(sd / actualLength);
         return sd;
