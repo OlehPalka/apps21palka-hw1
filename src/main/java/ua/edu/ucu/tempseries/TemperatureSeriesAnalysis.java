@@ -12,12 +12,12 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        Minus273(temperatureSeries);
+        minus273(temperatureSeries);
         this.temperatureSeries = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
         actualLength = temperatureSeries.length;
     }
 
-    public void Minus273(double[] temperatureSeries) {
+    public void minus273(double[] temperatureSeries) {
         int TheLowest = -273;
 
         for (double temp:temperatureSeries) {
@@ -28,7 +28,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double average() {
-        ExceptionsHolder();
+        exceptionsHolder();
         double sum = 0;
         for (double num : temperatureSeries) {
             sum += num;
@@ -36,14 +36,14 @@ public class TemperatureSeriesAnalysis {
         return sum / actualLength;
     }
 
-    public void ExceptionsHolder() {
+    public void exceptionsHolder() {
         if (actualLength == 0) {
             throw new IllegalArgumentException("Array of length 0");
         }
     }
 
     public double deviation() {
-        ExceptionsHolder();
+        exceptionsHolder();
 
         double mean = this.average();
         double SD = 0;
@@ -55,7 +55,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double min() {
-        ExceptionsHolder();
+        exceptionsHolder();
 
         double MinimalElement = Double.POSITIVE_INFINITY;
 
@@ -69,7 +69,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double max() {
-        ExceptionsHolder();
+        exceptionsHolder();
 
         double MaxElement = Double.POSITIVE_INFINITY * -1;
 
@@ -86,7 +86,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToValue(double tempValue) {
-        ExceptionsHolder();
+        exceptionsHolder();
 
         double CurClosest = Double.POSITIVE_INFINITY;
 
@@ -99,16 +99,13 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsLessThen(double tempValue) {
-        return FindTempLesOrGreat(tempValue, "<");
+        return findTempLesOrGreat(tempValue, "<");
     }
 
-    public double[] findTempsGreaterThen(double tempValue) {
+    public double[] findTempsGreaterThen(double tempValue) {return findTempLesOrGreat(tempValue, ">");}
 
-        return FindTempLesOrGreat(tempValue, ">");
-    }
-
-    public double[] FindTempLesOrGreat(double tempValue, String sign) {
-        ExceptionsHolder();
+    public double[] findTempLesOrGreat(double tempValue, String sign) {
+        exceptionsHolder();
 
         double [] result = new double[temperatureSeries.length];
         int counter = 0;
@@ -137,7 +134,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
-        Minus273(temps);
+        minus273(temps);
         int newLength = 0;
         int tempsLength = temps.length;
         if (actualLength + tempsLength > temperatureSeries.length) {
